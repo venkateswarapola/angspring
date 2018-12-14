@@ -10,10 +10,16 @@ import { Router } from '@angular/router';
 export class AddComponent implements OnInit {
   myForm: FormGroup;
   bu:string;
+  ku:string='';
   asbu:string;
   access:string;
   kin:string = ' ';
   data;
+  one:boolean=false;
+  two:boolean=false;
+  three:boolean=false;
+  four:boolean=false;
+  five:boolean=false;
   constructor(private router: Router,private auth:AuthService,private formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -54,6 +60,7 @@ addit()
 modify1(str:string)
 {
 this.access = str;
+
 }
 
 modify(str:string)
@@ -61,14 +68,56 @@ modify(str:string)
 this.bu = str;
 this.kin = this.kin + str +'\n';
 this.asbu = this.kin;
+
 }
 adding1()
 {
   this.myForm.patchValue({
     dbu:this.bu
     });
+    this.ku=this.bu;
     this.asbu = ' ';
     this.kin = ' ';
+if(this.bu=='PSCL')
+{
+this.one = true;
+this.two = false;
+this.three = false;
+this.four = false;
+this.five = false;
+}
+else if(this.bu=='26BU')
+{
+  this.one = false;
+  this.two =  true;
+  this.three = false;
+  this.four = false;
+  this.five = false;
+  }
+else if(this.bu=='30BU')
+{
+  this.one = false;
+  this.two = false;
+  this.three =  true;
+  this.four = false;
+  this.five = false;
+  }
+else if(this.bu=='GUNTUR123')
+{
+  this.one = false;
+  this.two = false;
+  this.three = false;
+  this.four =  true;
+  this.five = false;
+  }
+else
+{
+  this.one = false;
+  this.two = false;
+  this.three = false;
+  this.four = false;
+  this.five =  true;
+  }
 }
 remove1()
 {
@@ -77,6 +126,16 @@ remove1()
     });
     this.asbu = ' ';
     this.kin = ' ';
+    if(this.ku=='PSCL')
+    this.one = false;
+    else if(this.ku=='26BU')
+    this.two = false;
+    else if(this.ku=='30BU')
+    this.three = false;
+    else if(this.ku=='GUNTUR123')
+    this.four = false;
+    else
+    this.five = false;
 }
 adding2()
 {
@@ -91,6 +150,7 @@ remove2()
     });
     this.asbu = ' ';
     this.kin = ' ';
+
 }
 
 goback()
